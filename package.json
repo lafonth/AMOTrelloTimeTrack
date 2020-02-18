@@ -1,0 +1,15 @@
+{
+  "name": "AMOTrelloTimeTrack",
+  "version": "0.0.1",
+  "description": "Add time field to cards",
+  "main": "index.js",
+  "repository": "https://github.com/lafonth/AMOTrelloTimeTrack.git",
+  "author": "Hubert LAFONT",
+  "license": "MIT",
+  "scripts": {
+    "build": "parcel build src/html/*.html"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}

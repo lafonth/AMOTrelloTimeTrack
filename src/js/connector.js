@@ -32,7 +32,6 @@ var manageTimeButton = function (t, opts) {
 window.TrelloPowerUp.initialize({
     'card-buttons': function (t, opts) {
         return [{
-            icon: GRAY_ICON,
             text: 'Time Track',
             callback: manageTimeButton
         }];

@@ -16,23 +16,13 @@ var manageTimeButton = function (t, opts) {
     //     title: 'Time Manage'
     // });
     return t.popup({
-        title: 'Snooze Card',
-        items: [{
-            text: 'Choose Time',
-            callback: function (t, opts) {
-
-            }
-        }, {
-            text: 'In 1 hour',
-            callback: function (t, opts) {
-
-            }
-        }, {
-            text: 'In 2 hours',
-            callback: function (t, opts) {
-
-            }
-        }]
+        title: 'Time spent',
+        url: './timeManage.html',
+        args: {
+            name: 'Hubert',
+            idCard: t.idCard
+        },
+        height: 278 // initial height, can be changed later
     });
 }
 
@@ -40,7 +30,8 @@ window.TrelloPowerUp.initialize({
     'card-buttons': function (t, opts) {
         return [{
             text: 'Time Track',
-            callback: manageTimeButton
+            callback: manageTimeButton,
+            idCard: t.get('card')
         }];
 
     }

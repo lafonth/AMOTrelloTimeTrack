@@ -1,5 +1,3 @@
-console.log("hello world! trello power up")
-
 var manageTimeButton = function (t, opts) {
     // t.modal({
     //     // the url to load for the iframe
@@ -31,7 +29,7 @@ window.TrelloPowerUp.initialize({
         return [{
             text: 'Time Track',
             callback: manageTimeButton,
-            idCard: t.get('card')
+            idCard: "test"
         }];
 
     }

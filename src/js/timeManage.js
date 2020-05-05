@@ -47,7 +47,7 @@ document.getElementById('closePopup').onclick = function () {
 }
 document.getElementById('insertValue').onclick = function () {
     addTimeToTotalSpent(document.getElementById('timeSpentToAdd').value).then(function () {
-        t.popupClose();
+        t.closePopup();
     });
 }
 

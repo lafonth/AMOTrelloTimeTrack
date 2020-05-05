@@ -5,6 +5,9 @@ var t = TrelloPowerUp.iframe();
 function addTimeToTotalSpent(value) {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
+            if (!data){
+                data = new Array();
+            }
             data.push({
                 date: Date.now(),
                 timeSpent: value
@@ -35,7 +38,7 @@ function resetData() {
 /////general exec/////
 
 document.getElementById('closePopup').onclick = function () {
-    resetData().then(function(){
+    resetData().then(function () {
         t.closePopup();
     });
 }

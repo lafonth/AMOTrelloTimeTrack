@@ -1,11 +1,11 @@
 var manageTimeButton = function (t, opts) {
+    console.log(t);
     return t.popup({
         title: 'Time spent',
         url: './timeManage.html',
         args: {
             name: 'Hubert'
-        },
-        height: 278 // initial height, can be changed later
+        }
     });
 }
 

@@ -5,7 +5,9 @@ document.getElementById('closePopup').onclick = function(){
     t.closePopup();
 }
 document.getElementById('insertValue').onclick = function(){
-    t.set('card', 'shared', 'timeSpent', document.getElementById('timeSpent').value);
+    t.set('card', 'shared', 'timeSpent', document.getElementById('timeSpent').value).then(function(){
+        t.closePopup();
+    });
 }
 
 t.render(function() {

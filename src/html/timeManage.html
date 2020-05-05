@@ -9,10 +9,15 @@
 </head>
 
 <body>
-    <input id="timeSpent" class="marginAuto" type="time">
+    <div>
+        You passed <span id='totalSpent'> </span> on this task.
+    </div>
+    <div>
+        <input id="timeSpentToAddToAdd" class="marginAuto" type="time">
+    </div>
     <div class="textAlignCenter">
-        <button class="mod-primary" id='insertValue'>Insert</button>
-        <button class="mod-danger" id="closePopup">Close</button>
+        <button class="mod-primary" id='insertValue'>Add</button>
+        <button class="mod-danger" id="closePopup">Cancel</button>
     </div>
 
     <script src="../js/timeManage.js"></script>

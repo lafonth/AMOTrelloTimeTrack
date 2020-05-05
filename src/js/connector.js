@@ -3,7 +3,7 @@ var manageTimeButton = function (t, opts) {
     return t.popup({
         title: 'Time spent',
         url: './timeManage.html',
-        height: 120
+        height: 140
     });
 }
 

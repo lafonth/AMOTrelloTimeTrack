@@ -1,42 +1,65 @@
 var t = TrelloPowerUp.iframe();
 
-function addTimeToTotalSPent(value){
+/////utils card/////
+
+function addTimeToTotalSpent(value) {
     return new Promise((resolve) => {
-        var curentTotal;
-        t.get('card', 'shared', 'timeTrack').then(function(data) {
-            curentTotal = data.timeSpentToAdd;
-            data.timeSpentToAdd = value + curentTotal;
-            t.set('card', 'shared', 'timeTrack', data).then(function(){
+        t.get('card', 'shared', 'timeTrack').then(function (data) {
+            data.push({
+                date: Date.now(),
+                timeSpent: value
+            });
+            t.set('card', 'shared', 'timeTrack', data).then(function () {
                 resolve();
             });
         });
-    })
+    });
 }
 
-document.getElementById('closePopup').onclick = function(){
+function calculTotalTimeSPent() {
+    t.get('card', 'shared', 'timeTrack').then(function (data) {
+        var totalTimeSpent;
+        data.forEach(log => {
+            totalTimeSpent += log.time;
+        });
+        return totalTimeSpent;
+    });
+}
+
+function resetData() {
+    return new Promise((resolve) => {
+        t.set('card', 'shared', 'timetrack', {}).then(resolve());
+    });
+}
+
+/////general exec/////
+
+document.getElementById('closePopup').onclick = function () {
+    resetData().then(function(){
+        t.closePopup();
+    });
+}
+document.getElementById('closePopup').onclick = function () {
     t.closePopup();
 }
-document.getElementById('insertValue').onclick = function(){
-    addTimeToTotalSPent(document.getElementById('timeSpentToAdd').value).then(function(){
+document.getElementById('insertValue').onclick = function () {
+    addTimeToTotalSpent(document.getElementById('timeSpentToAdd').value).then(function () {
         t.popupClose();
     });
-    
 }
 
-t.render(function() {
-    t.get('card', 'shared', 'timeTrack').then(function(data) {
-        var container = document.getElementById('timeSpentStatus');
-        if(data.timeSpent){
-            var time = data.timeSpent ? data.timeSpent : "";
-            container.textContent = "You passed ";
-            var timeElem = document.createElement('span')
-            timeElem.textContent = time;
-            container.append(timeElem);
-            container.textContent = " on this task.";
-        }else{
-            container.textContent = "You didn't set time on this task yet."
-        }
-        
-    });
+/////render/////
+t.render(function () {
+    var container = document.getElementById('timeSpentStatus');
+    if (data.timeSpent) {
+        var time = calculTotalTimeSPent();
+        console.log("total time: ", time);
+        container.textContent = "You passed ";
+        var timeElem = document.createElement('span')
+        timeElem.textContent = time;
+        container.append(timeElem);
+        container.textContent = " on this task.";
+    } else {
+        container.textContent = "You didn't set time on this task yet."
+    }
 })
-

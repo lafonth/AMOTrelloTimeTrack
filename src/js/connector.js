@@ -2,10 +2,8 @@ var manageTimeButton = function (t, opts) {
     console.log(t);
     return t.popup({
         title: 'Time spent',
-        url: './timeManage.html'
-        // args: {
-        //     name: t.get('member')
-        // }
+        url: './timeManage.html',
+        height: 80
     });
 }
 

@@ -1,4 +1,8 @@
-<h1>HELLO {{args.name}} - {{args.idCard}}</h1>
+<h1>HELLO</h1>
 
 <input id="timeSpent" type="text">
 <button>Insert</button>
+
+<script>
+    document.getElementById('timeSpent').value = t.arg('name');
+</script>

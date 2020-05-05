@@ -17,8 +17,7 @@ var manageTimeButton = function (t, opts) {
         title: 'Time spent',
         url: './timeManage.html',
         args: {
-            name: 'Hubert',
-            idCard: t.idCard
+            name: 'Hubert'
         },
         height: 278 // initial height, can be changed later
     });
@@ -28,8 +27,7 @@ window.TrelloPowerUp.initialize({
     'card-buttons': function (t, opts) {
         return [{
             text: 'Time Track',
-            callback: manageTimeButton,
-            idCard: "test"
+            callback: manageTimeButton
         }];
 
     }

@@ -5,7 +5,7 @@ var t = TrelloPowerUp.iframe();
 function addTimeToTotalSpent(value) {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            if (!data){
+            if (!data) {
                 data = new Array();
             }
             data.push({
@@ -20,13 +20,15 @@ function addTimeToTotalSpent(value) {
 }
 
 function calculTotalTimeSPent() {
-    t.get('card', 'shared', 'timeTrack').then(function (data) {
-        console.log("timeTrack data:", data)
-        var totalTimeSpent;
-        data.forEach(log => {
-            totalTimeSpent += log.timeSpent;
+    return new Promise((resolve) => {
+        t.get('card', 'shared', 'timeTrack').then(function (data) {
+            console.log("timeTrack data:", data)
+            var totalTimeSpent;
+            data.forEach(log => {
+                totalTimeSpent += log.timeSpent;
+            });
+            return totalTimeSpent;
         });
-        return totalTimeSpent;
     });
 }
 
@@ -38,7 +40,7 @@ function resetData() {
 
 /////general exec/////
 
-document.getElementById('closePopup').onclick = function () {
+document.getElementById('resetData').onclick = function () {
     resetData().then(function () {
         t.closePopup();
     });
@@ -55,15 +57,16 @@ document.getElementById('insertValue').onclick = function () {
 /////render/////
 t.render(function () {
     var container = document.getElementById('timeSpentStatus');
-    var time = calculTotalTimeSPent();
-    console.log("total time:", time)
-    if (time) {
-        container.textContent = "You passed ";
-        var timeElem = document.createElement('span')
-        timeElem.textContent = time;
-        container.append(timeElem);
-        container.textContent = " on this task.";
-    } else {
-        container.textContent = "You didn't set time on this task yet."
-    }
+    var time = calculTotalTimeSPent().then(function () {
+        console.log("total time:", time)
+        if (time) {
+            container.textContent = "You passed ";
+            var timeElem = document.createElement('span')
+            timeElem.textContent = time;
+            container.append(timeElem);
+            container.textContent = " on this task.";
+        } else {
+            container.textContent = "You didn't set time on this task yet."
+        }
+    });
 })

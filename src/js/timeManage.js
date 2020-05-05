@@ -25,7 +25,7 @@ document.getElementById('insertValue').onclick = function(){
 
 t.render(function() {
     t.get('card', 'shared', 'timeTrack').then(function(data) {
-        var container = document.getElementById('totalSpent');
+        var container = document.getElementById('timeSpentStatus');
         if(data.timeSpent){
             var time = data.timeSpent ? data.timeSpent : "";
             container.textContent = "You passed ";

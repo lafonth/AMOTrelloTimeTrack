@@ -21,6 +21,7 @@ function addTimeToTotalSpent(value) {
 
 function calculTotalTimeSPent() {
     t.get('card', 'shared', 'timeTrack').then(function (data) {
+        console.log("timeTrack data:", data)
         var totalTimeSpent;
         data.forEach(log => {
             totalTimeSpent += log.time;

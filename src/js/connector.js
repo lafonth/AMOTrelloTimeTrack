@@ -4,7 +4,7 @@ var manageTimeButton = function (t, opts) {
         title: 'Time spent',
         url: './timeManage.html',
         args: {
-            name: 'Hubert'
+            name: t.get('member')
         }
     });
 }

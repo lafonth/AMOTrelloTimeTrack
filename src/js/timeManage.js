@@ -4,8 +4,12 @@ console.log(t);
 document.getElementById('closePopup').onclick = function(){
     t.closePopup();
 }
+document.getElementById('insertValue').onclick = function(){
+    t.set('card', 'shared', 'timeSpent', document.getElementById('timeSpent').value);
+}
 
 t.render(function() {
-    document.getElementById('timeSpent').value = t.arg('name');
+    console.log(t.get('card', 'shared', 'timeSpent'));
+    document.getElementById('timeSpent').value = '';
 })
 

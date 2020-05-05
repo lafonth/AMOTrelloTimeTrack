@@ -9,7 +9,8 @@ document.getElementById('insertValue').onclick = function(){
 }
 
 t.render(function() {
-    console.log(t.get('card', 'shared', 'timeSpent'));
-    document.getElementById('timeSpent').value = '';
+    t.get('card', 'shared', 'timeSpent').then(function(data) {
+        document.getElementById('timeSpent').value = data ? data : "";
+    });
 })
 

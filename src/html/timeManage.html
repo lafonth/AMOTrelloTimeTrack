@@ -1,8 +1,10 @@
 <h1>HELLO</h1>
 
 <input id="timeSpent" type="text">
-<button>Insert</button>
+<button onclick="t.closePopup()">Insert</button>
 
 <script>
+    console.log(window.TrelloPowerUp);
+    var t = window.TrelloPowerUp.iframe();
     document.getElementById('timeSpent').value = t.arg('name');
 </script>

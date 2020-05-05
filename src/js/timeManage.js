@@ -1,5 +1,4 @@
 var t = TrelloPowerUp.iframe();
-console.log(t);
 
 document.getElementById('closePopup').onclick = function(){
     t.closePopup();

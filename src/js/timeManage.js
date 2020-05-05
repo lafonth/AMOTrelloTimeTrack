@@ -24,7 +24,7 @@ function calculTotalTimeSPent() {
         console.log("timeTrack data:", data)
         var totalTimeSpent;
         data.forEach(log => {
-            totalTimeSpent += log.time;
+            totalTimeSpent += log.timeSpent;
         });
         return totalTimeSpent;
     });

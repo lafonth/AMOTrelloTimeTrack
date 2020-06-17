@@ -13,7 +13,7 @@ function addTimeToTotalSpent(value, date) {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
             data.logs.push({
                 date: date,
-                timeSpent: value.parseInt()
+                timeSpent: value
             });
             t.set('card', 'shared', 'timeTrack', data).then(function () {
                 resolve();

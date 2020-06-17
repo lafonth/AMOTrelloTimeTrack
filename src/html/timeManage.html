@@ -13,10 +13,25 @@
 
     </div>
     <div>
-        <input id="timeSpentToAdd" class="marginAuto" type="number" min=1 max=40>
+        <table>
+            <thead>
+                <th>Date</th>
+                <th>Time Spent</th>
+            </thead>
+            <tbody>
+                <td>
+                    <input type="text" id="dateSpent" name="dateSpent"/>
+                </td>
+                <td>
+                    <input id="timeSpentToAdd" class="marginAuto" type="number" min=1 max=8>
+                </td>
+                <td>
+                    <button class="mod-primary" id='insertValue'>Add</button>
+                </td>
+            </tbody>
+        </table>
     </div>
     <div class="textAlignCenter">
-        <button class="mod-primary" id='insertValue'>Add</button>
         <button class="mod-danger" id="closePopup">Cancel</button>
     </div>
     <div class="textAlignCenter">

@@ -1,4 +1,19 @@
+import { $ } from "jquery";
+import datepickerFactory from 'jquery-datepicker';
+/////init/////
+
 var t = TrelloPowerUp.iframe();
+
+datepickerFactory($);
+ 
+$(function() {
+  $('#dateSpent').datepicker({
+      changeMonth: true,
+      changeYear: true,
+      showButtonPanel: true,
+      dateFormat: "dd/mm/yy"
+  });
+});
 
 /////utils card/////
 

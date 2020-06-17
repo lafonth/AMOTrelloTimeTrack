@@ -5,3 +5,7 @@
 .marginAuto{
     margin: auto;
 }
+
+body{
+    padding: 20px;
+}

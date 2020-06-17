@@ -1,23 +1,22 @@
 import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 var t = TrelloPowerUp.iframe();
+var initData ={
+    logs: new Array
+}
+t.set('card', 'shared', 'timeTrack', initData);
 
 /////utils card/////
 
 function addTimeToTotalSpent(value, date) {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log(typeof data);
-            if (Array.isArray(data)) {
-                data = new Array();
-            }
-            var copy = data;
             console.log("data before add:", data);
-            copy.push({
+            data.logs.push({
                 date: date,
                 timeSpent: value
             });
-            console.log("data just before save:", copy);
+            console.log("data just before save:", data);
             // t.set('card', 'shared', 'timeTrack', data).then(function () {
             //     resolve();
             // });

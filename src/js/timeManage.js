@@ -70,7 +70,7 @@ document.getElementById('insertValue').onclick = function () {
 
 /////render/////
 t.render(function () {
-    var container = document.getElementById('timeSpentStatus');
+    var container = document.getElementById('totalTimeSpent');
     var time = calculTotalTimeSpent().then(function () {
         console.log("total time:", time)
         if (time) {

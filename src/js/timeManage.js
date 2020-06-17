@@ -59,12 +59,11 @@ document.getElementById('closeModal').onclick = function () {
     t.closeModal();
 }
 document.getElementById('insertValue').onclick = function () {
-    valTimeSpentToAdd = document.getElementById('timeSpentToAdd').value;
-    valDateSpent = document.getElementById('dateSpent').value;
-    console.log(valTimeSpentToAdd, valDateSpent);
-    // addTimeToTotalSpent(valTimeSpentToAdd,valDateSpent ).then(function () {
-    //     t.closeModal();
-    // });
+    var valTimeSpentToAdd = document.getElementById('timeSpentToAdd').value;
+    var valDateSpent = document.getElementById('dateSpent').value;
+    addTimeToTotalSpent(valTimeSpentToAdd,valDateSpent ).then(function () {
+        t.closeModal();
+    });
 }
 
 /////render/////

@@ -1,8 +1,16 @@
-import {$} from "jquery";
 import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
-window.$ = $;
 var t = TrelloPowerUp.iframe();
+
+$(document).ready(function(){
+    if (jQuery) {  
+      // jQuery is loaded  
+      alert("Yeah!");
+    } else {
+      // jQuery is not loaded
+      alert("Doesn't Work");
+    }
+ });
 
 /////utils card/////
 

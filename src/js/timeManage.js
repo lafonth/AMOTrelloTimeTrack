@@ -20,11 +20,7 @@ function addTimeToTotalSpent(value, date) {
             t.set('card', 'shared', 'timeTrack', data).then(function () {
                 resolve();
             });
-        });
-        t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log("after:", data);
-        });
-        
+        });        
     });
 }
 
@@ -52,6 +48,9 @@ function resetData() {
 
 document.getElementById('resetData').onclick = function () {
     resetData().then(function () {
+        t.get('card', 'shared', 'timeTrack').then(function (data) {
+            console.log("after RESET :", data);
+        });
         t.closeModal();
     });
 }
@@ -62,6 +61,9 @@ document.getElementById('insertValue').onclick = function () {
     var valTimeSpentToAdd = document.getElementById('timeSpentToAdd').value;
     var valDateSpent = document.getElementById('dateSpent').value;
     addTimeToTotalSpent(valTimeSpentToAdd,valDateSpent ).then(function () {
+        t.get('card', 'shared', 'timeTrack').then(function (data) {
+            console.log("after:", data);
+        });
         t.closeModal();
     });
 }

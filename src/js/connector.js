@@ -1,8 +1,8 @@
 var manageTimeButton = function (t, opts) {
-    return t.popup({
+    return t.modal({
         title: 'Time spent',
         url: './timeManage.html',
-        height: 140
+        height: 400
     });
 }
 
@@ -12,6 +12,5 @@ window.TrelloPowerUp.initialize({
             text: 'Time Track',
             callback: manageTimeButton
         }];
-
     }
 })

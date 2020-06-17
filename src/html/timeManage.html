@@ -17,10 +17,11 @@
             <thead>
                 <th>Date</th>
                 <th>Time Spent</th>
+                <th>Actions</th>
             </thead>
             <tbody>
                 <td>
-                    <input type="text" id="dateSpent" name="dateSpent"/>
+                    <input type="text" id="dateSpent" name="dateSpent" />
                 </td>
                 <td>
                     <input id="timeSpentToAdd" class="marginAuto" type="number" min=1 max=8>
@@ -36,6 +37,21 @@
     </div>
     <div class="textAlignCenter">
         <button class="mod-danger" id="resetData">Reset Time</button>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>
+                    Total Time Spent
+                </h2>
+            </div>
+            <div class="col">
+                <h2>
+                    Logs
+                </h2>
+            </div>
+        </div>
     </div>
 
     <script src="../js/timeManage.js"></script>

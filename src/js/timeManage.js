@@ -68,8 +68,9 @@ document.getElementById('insertValue').onclick = function () {
 t.render(function () {
     console.log("render triggered");
     var totalContainer = document.getElementById('totalTimeSpent');
-    var time = calculTotalTimeSpent();
-    totalContainer.textContent = time;
+    calculTotalTimeSpent().then((time)=>{
+        totalContainer.textContent = time;
+    });
     // if (time > 0) {
     //     var str = "You passed " + time + " hours on this task.";
     //     totalContainer.textContent = str;
@@ -77,6 +78,6 @@ t.render(function () {
     //     totalContainer.textContent = "You didn't set time spent on this task yet."
     // }
 
-    var logsContainer = document.getElementById('logTimeSpent');
-    logsContainer.textContent = displayLogs();
+    // var logsContainer = document.getElementById('logTimeSpent');
+    // logsContainer.textContent = displayLogs();
 })

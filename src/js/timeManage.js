@@ -7,19 +7,18 @@ var t = TrelloPowerUp.iframe();
 function addTimeToTotalSpent(value, date) {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log("data before add:", data);
-        });
-        t.get('card', 'shared', 'timeTrack').then(function (data) {
             if (!data) {
                 data = new Array();
             }
+            console.log("data before add:", data);
             data.push({
                 date: date,
                 timeSpent: value
             });
-            t.set('card', 'shared', 'timeTrack', data).then(function () {
-                resolve();
-            });
+            console.log("data just before save:", data);
+            // t.set('card', 'shared', 'timeTrack', data).then(function () {
+            //     resolve();
+            // });
         });
     });
 }

@@ -28,9 +28,11 @@ function calculTotalTimeSpent() {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
             var totalTimeSpent = 0;
-            data.logs.forEach(log => {
-                totalTimeSpent += parseInt(log.timeSpent);
-            });
+            if(data.logs){
+                data.logs.forEach(log => {
+                    totalTimeSpent += parseInt(log.timeSpent);
+                });
+            }
             resolve(totalTimeSpent);
         });
     });
@@ -55,6 +57,7 @@ function updateDisplay() {
 
 document.getElementById('resetData').onclick = function () {
     resetData().then(function () {
+        updateDisplay();
         // t.closeModal();
     });
 }
@@ -74,9 +77,7 @@ document.getElementById('insertValue').onclick = function () {
 
 /////render/////
 t.render(function () {
-    console.log("render triggered");
-
-    // NOT TRIGGERED WHEN SET DATA use
+    // NOT TRIGGERED WHEN SET DATA used
 
     updateDisplay();
 

@@ -53,7 +53,7 @@ document.getElementById('insertValue').onclick = function () {
     var valTimeSpentToAdd = document.getElementById('timeSpentToAdd').value;
     var valDateSpent = document.getElementById('dateSpent').value;
     addTimeToTotalSpent(valTimeSpentToAdd, valDateSpent).then(function () {
-        t.closeModal();
+        // t.closeModal();
     });
 }
 

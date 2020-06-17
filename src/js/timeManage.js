@@ -24,11 +24,9 @@ function addTimeToTotalSpent(value, date) {
 function calculTotalTimeSpent() {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log("timeTrack data:", data);
-            var totalTimeSpent;
+            var totalTimeSpent = 0;
             data.forEach(log => {
-                console.log("log:", log);
-                totalTimeSpent += log.timeSpent;
+                totalTimeSpent += log.timeSpent.parseInt();
             });
             return totalTimeSpent;
         });
@@ -61,17 +59,19 @@ document.getElementById('insertValue').onclick = function () {
 
 /////render/////
 t.render(function () {
-    var container = document.getElementById('totalTimeSpent');
+    var totalContainer = document.getElementById('totalTimeSpent');
     var time = calculTotalTimeSpent().then(function () {
-        console.log("total time:", time)
         if (time) {
-            container.textContent = "You passed ";
+            totalContainer.textContent = "You passed ";
             var timeElem = document.createElement('span')
             timeElem.textContent = time;
-            container.append(timeElem);
-            container.textContent = " on this task.";
+            totalContainer.append(timeElem);
+            totalContainer.textContent = " on this task.";
         } else {
-            container.textContent = "You didn't set time on this task yet."
+            totalContainer.textContent = "You didn't set time spent on this task yet."
         }
     });
+
+    var logsContainer = document.getElementById('logTimeSpent');
+    logsContainer.textContent = displayLogs();
 })

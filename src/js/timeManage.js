@@ -66,7 +66,10 @@ document.getElementById('insertValue').onclick = function () {
 /////render/////
 t.render(function () {
     console.log("render triggered");
-    // var totalContainer = document.getElementById('totalTimeSpent');
+    var totalContainer = document.getElementById('totalTimeSpent');
+    calculTotalTimeSpent().then(function (time) {
+        console.log(time);
+    });
     // calculTotalTimeSpent().then(function (time) {
     //     if (time) {
     //         totalContainer.textContent = "You passed ";

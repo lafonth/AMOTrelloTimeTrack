@@ -1,5 +1,6 @@
 import { $ } from "jquery";
 import datepickerFactory from 'jquery-datepicker';
+import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 
 var t = TrelloPowerUp.iframe();

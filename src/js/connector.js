@@ -1,5 +1,3 @@
-import 'bootstrap';
-
 var manageTimeButton = function (t, opts) {
     return t.modal({
         title: 'Time spent',

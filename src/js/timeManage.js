@@ -7,9 +7,6 @@ var t = TrelloPowerUp.iframe();
 function addTimeToTotalSpent(value, date) {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log("before:", data);
-        });
-        t.get('card', 'shared', 'timeTrack').then(function (data) {
             if (!data) {
                 data = new Array();
             }
@@ -20,17 +17,17 @@ function addTimeToTotalSpent(value, date) {
             t.set('card', 'shared', 'timeTrack', data).then(function () {
                 resolve();
             });
-        });        
+        });
     });
 }
 
 function calculTotalTimeSpent() {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            // console.log("timeTrack data:", data);
+            console.log("timeTrack data:", data);
             var totalTimeSpent;
             data.forEach(log => {
-                // console.log("log:", log);
+                console.log("log:", log);
                 totalTimeSpent += log.timeSpent;
             });
             return totalTimeSpent;
@@ -40,7 +37,7 @@ function calculTotalTimeSpent() {
 
 function resetData() {
     return new Promise((resolve) => {
-        t.set('card', 'shared', 'timetrack', {}).then(resolve());
+        t.set('card', 'shared', 'timeTrack', {}).then(resolve());
     });
 }
 
@@ -48,10 +45,7 @@ function resetData() {
 
 document.getElementById('resetData').onclick = function () {
     resetData().then(function () {
-        t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log("after RESET :", data);
-            t.closeModal();
-        });
+        t.closeModal();
     });
 }
 document.getElementById('closeModal').onclick = function () {
@@ -60,11 +54,8 @@ document.getElementById('closeModal').onclick = function () {
 document.getElementById('insertValue').onclick = function () {
     var valTimeSpentToAdd = document.getElementById('timeSpentToAdd').value;
     var valDateSpent = document.getElementById('dateSpent').value;
-    addTimeToTotalSpent(valTimeSpentToAdd,valDateSpent ).then(function () {
-        t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log("after:", data);
-            t.closeModal();
-        });
+    addTimeToTotalSpent(valTimeSpentToAdd, valDateSpent).then(function () {
+        t.closeModal();
     });
 }
 

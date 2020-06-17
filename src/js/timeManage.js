@@ -76,11 +76,9 @@ document.getElementById('insertValue').onclick = function () {
 t.render(function () {
     console.log("render triggered");
 
-    // NOT TRIGGERED WHEN SET DATA
+    // NOT TRIGGERED WHEN SET DATA use
 
-    // calculTotalTimeSpent().then((time)=>{
-    //     document.getElementById('totalTimeSpent').textContent = time;
-    // });
+    updateDisplay();
 
     // var logsContainer = document.getElementById('logTimeSpent');
     // logsContainer.textContent = displayLogs(); //TODO

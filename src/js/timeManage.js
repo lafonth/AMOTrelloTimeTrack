@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 var t = TrelloPowerUp.iframe();
-var initData ={
+var initData = {
     logs: new Array
 }
 t.set('card', 'shared', 'timeTrack', initData);
@@ -23,15 +23,17 @@ function addTimeToTotalSpent(value, date) {
 }
 
 function calculTotalTimeSpent() {
-    t.get('card', 'shared', 'timeTrack').then(function (data) {
-        console.log("data: ", data);
-        var totalTimeSpent = 0;
-        data.logs.forEach(log => {
-            console.log("log: ", log);
-            totalTimeSpent += parseInt(log.timeSpent);
-        });
+    return new Promise((resolve) => {
+        t.get('card', 'shared', 'timeTrack').then(function (data) {
+            console.log("data: ", data);
+            var totalTimeSpent = 0;
+            data.logs.forEach(log => {
+                console.log("log: ", log);
+                totalTimeSpent += parseInt(log.timeSpent);
+            });
 
-        return totalTimeSpent;
+            resolve(totalTimeSpent);
+        });
     });
 }
 
@@ -67,12 +69,13 @@ t.render(function () {
     console.log("render triggered");
     var totalContainer = document.getElementById('totalTimeSpent');
     var time = calculTotalTimeSpent();
-    if (time > 0) {
-        var str = "You passed " + time + " hours on this task.";
-        totalContainer.textContent = str;
-    } else {
-        totalContainer.textContent = "You didn't set time spent on this task yet."
-    }
+    totalContainer.textContent = time;
+    // if (time > 0) {
+    //     var str = "You passed " + time + " hours on this task.";
+    //     totalContainer.textContent = str;
+    // } else {
+    //     totalContainer.textContent = "You didn't set time spent on this task yet."
+    // }
 
     var logsContainer = document.getElementById('logTimeSpent');
     logsContainer.textContent = displayLogs();

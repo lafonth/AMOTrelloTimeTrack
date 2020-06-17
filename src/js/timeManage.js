@@ -25,13 +25,10 @@ function addTimeToTotalSpent(value, date) {
 function calculTotalTimeSpent() {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log("data: ", data);
             var totalTimeSpent = 0;
             data.logs.forEach(log => {
-                console.log("log: ", log);
                 totalTimeSpent += parseInt(log.timeSpent);
             });
-
             resolve(totalTimeSpent);
         });
     });
@@ -41,6 +38,15 @@ function resetData() {
     return new Promise((resolve) => {
         t.set('card', 'shared', 'timeTrack', {}).then(resolve());
     });
+}
+
+function updateDisplay() {
+    calculTotalTimeSpent().then((time)=>{
+        document.getElementById('totalTimeSpent').textContent = time;
+    });
+
+    // var logsContainer = document.getElementById('logTimeSpent');
+    // logsContainer.textContent = displayLogs(); //TODO
 }
 
 /////general exec/////
@@ -57,27 +63,23 @@ document.getElementById('insertValue').onclick = function () {
     var valTimeSpentToAdd = document.getElementById('timeSpentToAdd').value;
     var valDateSpent = document.getElementById('dateSpent').value;
     addTimeToTotalSpent(valTimeSpentToAdd, valDateSpent).then(function () {
+        updateDisplay();
         // t.closeModal();
-        t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log("after add: ", data);
-        });
     });
 }
+
+
 
 /////render/////
 t.render(function () {
     console.log("render triggered");
-    var totalContainer = document.getElementById('totalTimeSpent');
-    calculTotalTimeSpent().then((time)=>{
-        totalContainer.textContent = time;
-    });
-    // if (time > 0) {
-    //     var str = "You passed " + time + " hours on this task.";
-    //     totalContainer.textContent = str;
-    // } else {
-    //     totalContainer.textContent = "You didn't set time spent on this task yet."
-    // }
+
+    // NOT TRIGGERED WHEN SET DATA
+
+    // calculTotalTimeSpent().then((time)=>{
+    //     document.getElementById('totalTimeSpent').textContent = time;
+    // });
 
     // var logsContainer = document.getElementById('logTimeSpent');
-    // logsContainer.textContent = displayLogs();
+    // logsContainer.textContent = displayLogs(); //TODO
 })

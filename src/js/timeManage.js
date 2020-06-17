@@ -1,17 +1,8 @@
-import {
-    $
-} from "jquery";
+import {$} from "jquery";
 import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 
 var t = TrelloPowerUp.iframe();
-
-$('#dateSpent').datepicker({
-    changeMonth: true,
-    changeYear: true,
-    showButtonPanel: true,
-    dateFormat: "dd/mm/yy"
-});
 
 /////utils card/////
 

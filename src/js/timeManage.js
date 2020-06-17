@@ -79,6 +79,6 @@ t.render(function () {
         }
     });
 
-    var logsContainer = document.getElementById('logTimeSpent');
-    logsContainer.textContent = displayLogs();
+    // var logsContainer = document.getElementById('logTimeSpent');
+    // logsContainer.textContent = displayLogs();
 })

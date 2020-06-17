@@ -43,7 +43,7 @@ function resetData() {
 
 document.getElementById('resetData').onclick = function () {
     resetData().then(function () {
-        t.closeModal();
+        // t.closeModal();
     });
 }
 document.getElementById('closeModal').onclick = function () {

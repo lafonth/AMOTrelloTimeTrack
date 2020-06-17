@@ -2,8 +2,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 var t = TrelloPowerUp.iframe();
 
-$("#timeSpentStatus").textContent = "JEEJ";
-
 /////utils card/////
 
 function addTimeToTotalSpent(value, date) {
@@ -61,8 +59,8 @@ document.getElementById('closeModal').onclick = function () {
     t.closeModal();
 }
 document.getElementById('insertValue').onclick = function () {
-    valTimeSpentToAdd = $('#timeSpentToAdd').value;
-    valDateSpent = $('#dateSpent').value;
+    valTimeSpentToAdd = document.getElementById('timeSpentToAdd').value;
+    valDateSpent = document.getElementById('dateSpent').value;
     console.log(valTimeSpentToAdd, valDateSpent);
     // addTimeToTotalSpent(valTimeSpentToAdd,valDateSpent ).then(function () {
     //     t.closeModal();

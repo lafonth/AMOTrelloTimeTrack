@@ -1,7 +1,7 @@
 import {$} from "jquery";
 import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
-
+window.$ = $;
 var t = TrelloPowerUp.iframe();
 
 /////utils card/////

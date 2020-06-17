@@ -27,8 +27,7 @@ function calculTotalTimeSpent() {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
             var totalTimeSpent = 0;
-            console.log(data);
-            if(data.logs){
+            if(data.logs !== 'undefined'){
                 data.logs.forEach(log => {
                     totalTimeSpent += parseInt(log.timeSpent);
                 });

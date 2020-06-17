@@ -11,15 +11,13 @@ t.set('card', 'shared', 'timeTrack', initData);
 function addTimeToTotalSpent(value, date) {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log("data before add:", data);
             data.logs.push({
                 date: date,
-                timeSpent: value
+                timeSpent: value.parseInt()
             });
-            console.log("data just before save:", data);
-            // t.set('card', 'shared', 'timeTrack', data).then(function () {
-            //     resolve();
-            // });
+            t.set('card', 'shared', 'timeTrack', data).then(function () {
+                resolve();
+            });
         });
     });
 }
@@ -28,9 +26,9 @@ function calculTotalTimeSpent() {
     t.get('card', 'shared', 'timeTrack').then(function (data) {
         console.log("data: ", data);
         var totalTimeSpent = 0;
-        data.forEach(log => {
+        data.logs.forEach(log => {
             console.log("log: ", log);
-            totalTimeSpent += log.timeSpent.parseInt();
+            totalTimeSpent += parseInt(log.timeSpent);
         });
 
         return totalTimeSpent;
@@ -67,17 +65,17 @@ document.getElementById('insertValue').onclick = function () {
 /////render/////
 t.render(function () {
     console.log("render triggered");
-    // var totalContainer = document.getElementById('totalTimeSpent');
-    // var time = calculTotalTimeSpent();
-    // if (time) {
-    //     totalContainer.textContent = "You passed ";
-    //     var timeElem = document.createElement('span')
-    //     timeElem.textContent = time;
-    //     totalContainer.append(timeElem);
-    //     totalContainer.textContent = " on this task.";
-    // } else {
-    //     totalContainer.textContent = "You didn't set time spent on this task yet."
-    // }
+    var totalContainer = document.getElementById('totalTimeSpent');
+    var time = calculTotalTimeSpent();
+    if (time > 0) {
+        totalContainer.textContent = "You passed ";
+        var timeElem = document.createElement('span')
+        timeElem.textContent = time;
+        totalContainer.append(timeElem);
+        totalContainer.textContent = " on this task.";
+    } else {
+        totalContainer.textContent = "You didn't set time spent on this task yet."
+    }
 
     // var logsContainer = document.getElementById('logTimeSpent');
     // logsContainer.textContent = displayLogs();

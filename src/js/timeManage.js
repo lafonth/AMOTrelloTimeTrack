@@ -1,5 +1,5 @@
 import { $ } from "jquery";
-import datepickerFactory from 'jquery-datepicker';
+import datepickerFactory from 'jquery-datepicker/jquery-datepicker';
 import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 

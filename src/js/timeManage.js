@@ -57,6 +57,9 @@ document.getElementById('insertValue').onclick = function () {
     var valDateSpent = document.getElementById('dateSpent').value;
     addTimeToTotalSpent(valTimeSpentToAdd, valDateSpent).then(function () {
         // t.closeModal();
+        t.get('card', 'shared', 'timeTrack').then(function (data) {
+            console.log("after add: ", data);
+        });
     });
 }
 

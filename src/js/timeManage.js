@@ -2,15 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 var t = TrelloPowerUp.iframe();
 
-$(document).ready(function(){
-    if (jQuery) {  
-      // jQuery is loaded  
-      alert("Yeah!");
-    } else {
-      // jQuery is not loaded
-      alert("Doesn't Work");
-    }
- });
+$("#timeSpentStatus").textContent = "JEEJ";
 
 /////utils card/////
 

@@ -10,12 +10,13 @@ function addTimeToTotalSpent(value, date) {
             if (!data) {
                 data = new Array();
             }
+            var copy = data;
             console.log("data before add:", data);
-            data.push({
+            copy.push({
                 date: date,
                 timeSpent: value
             });
-            console.log("data just before save:", data);
+            console.log("data just before save:", copy);
             // t.set('card', 'shared', 'timeTrack', data).then(function () {
             //     resolve();
             // });

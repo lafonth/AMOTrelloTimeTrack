@@ -1,16 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 var t = TrelloPowerUp.iframe();
-var initData = {
-    logs: new Array
-}
-t.set('card', 'shared', 'timeTrack', initData);
 
 /////utils card/////
 
 function addTimeToTotalSpent(value, date) {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
+            if(!data.logs){
+                var data = {
+                    logs: new Array
+                }
+            }
             data.logs.push({
                 date: date,
                 timeSpent: value

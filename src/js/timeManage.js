@@ -7,8 +7,9 @@ var t = TrelloPowerUp.iframe();
 function addTimeToTotalSpent(value, date) {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
+            console.log(data);
             if(!data.logs){
-                var data = {
+                data = {
                     logs: new Array
                 }
             }

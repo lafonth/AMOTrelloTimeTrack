@@ -61,9 +61,12 @@ document.getElementById('closeModal').onclick = function () {
     t.closeModal();
 }
 document.getElementById('insertValue').onclick = function () {
-    addTimeToTotalSpent($('#timeSpentToAdd').value, $('#timeSpentToAdd').value).then(function () {
-        t.closeModal();
-    });
+    valTimeSpentToAdd = $('#timeSpentToAdd').value;
+    valDateSpent = $('#dateSpent').value;
+    console.log(valTimeSpentToAdd, valDateSpent);
+    // addTimeToTotalSpent(valTimeSpentToAdd,valDateSpent ).then(function () {
+    //     t.closeModal();
+    // });
 }
 
 /////render/////

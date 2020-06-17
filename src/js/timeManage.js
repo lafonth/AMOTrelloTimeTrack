@@ -23,17 +23,15 @@ function addTimeToTotalSpent(value, date) {
 }
 
 function calculTotalTimeSpent() {
-    return new Promise((resolve) => {
-        t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log("data: ", data);
-            var totalTimeSpent = 0;
-            data.forEach(log => {
-                console.log("log: ", log);
-                totalTimeSpent += log.timeSpent.parseInt();
-            });
-
-            resolve(totalTimeSpent);
+    t.get('card', 'shared', 'timeTrack').then(function (data) {
+        console.log("data: ", data);
+        var totalTimeSpent = 0;
+        data.forEach(log => {
+            console.log("log: ", log);
+            totalTimeSpent += log.timeSpent.parseInt();
         });
+
+        return totalTimeSpent;
     });
 }
 

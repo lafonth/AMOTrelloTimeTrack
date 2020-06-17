@@ -68,20 +68,16 @@ document.getElementById('insertValue').onclick = function () {
 t.render(function () {
     console.log("render triggered");
     var totalContainer = document.getElementById('totalTimeSpent');
-    calculTotalTimeSpent().then(function (time) {
-        console.log(time);
-    });
-    // calculTotalTimeSpent().then(function (time) {
-    //     if (time) {
-    //         totalContainer.textContent = "You passed ";
-    //         var timeElem = document.createElement('span')
-    //         timeElem.textContent = time;
-    //         totalContainer.append(timeElem);
-    //         totalContainer.textContent = " on this task.";
-    //     } else {
-    //         totalContainer.textContent = "You didn't set time spent on this task yet."
-    //     }
-    // });
+    var time = calculTotalTimeSpent();
+    if (time) {
+        totalContainer.textContent = "You passed ";
+        var timeElem = document.createElement('span')
+        timeElem.textContent = time;
+        totalContainer.append(timeElem);
+        totalContainer.textContent = " on this task.";
+    } else {
+        totalContainer.textContent = "You didn't set time spent on this task yet."
+    }
 
     // var logsContainer = document.getElementById('logTimeSpent');
     // logsContainer.textContent = displayLogs();

@@ -27,11 +27,11 @@ function calculTotalTimeSpent() {
             console.log("data: ", data);
             var totalTimeSpent = 0;
             data.forEach(log => {
-                // console.log("log: ", log);
+                console.log("log: ", log);
                 totalTimeSpent += log.timeSpent.parseInt();
             });
 
-            return totalTimeSpent;
+            resolve(totalTimeSpent);
         });
     });
 }
@@ -67,7 +67,7 @@ document.getElementById('insertValue').onclick = function () {
 t.render(function () {
     console.log("render triggered");
     var totalContainer = document.getElementById('totalTimeSpent');
-    var time = calculTotalTimeSpent().then(function () {
+    calculTotalTimeSpent().then(function (time) {
         if (time) {
             totalContainer.textContent = "You passed ";
             var timeElem = document.createElement('span')

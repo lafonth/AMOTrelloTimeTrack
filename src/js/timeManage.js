@@ -68,11 +68,8 @@ t.render(function () {
     var totalContainer = document.getElementById('totalTimeSpent');
     var time = calculTotalTimeSpent();
     if (time > 0) {
-        totalContainer.textContent = "You passed ";
-        var timeElem = document.createElement('span')
-        timeElem.textContent = time;
-        totalContainer.append(timeElem);
-        totalContainer.textContent = " on this task.";
+        var str = "You passed " + time + " hours on this task.";
+        totalContainer.textContent = str;
     } else {
         totalContainer.textContent = "You didn't set time spent on this task yet."
     }

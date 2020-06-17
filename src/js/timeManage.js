@@ -6,30 +6,37 @@ var t = TrelloPowerUp.iframe();
 
 /////utils card/////
 
-function addTimeToTotalSpent(value) {
+function addTimeToTotalSpent(value, date) {
     return new Promise((resolve) => {
+        t.get('card', 'shared', 'timeTrack').then(function (data) {
+            console.log("before:", data);
+        });
         t.get('card', 'shared', 'timeTrack').then(function (data) {
             if (!data) {
                 data = new Array();
             }
             data.push({
-                date: Date.now(),
+                date: date,
                 timeSpent: value
             });
             t.set('card', 'shared', 'timeTrack', data).then(function () {
                 resolve();
             });
         });
+        t.get('card', 'shared', 'timeTrack').then(function (data) {
+            console.log("after:", data);
+        });
+        
     });
 }
 
-function calculTotalTimeSPent() {
+function calculTotalTimeSpent() {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            console.log("timeTrack data:", data)
+            // console.log("timeTrack data:", data);
             var totalTimeSpent;
             data.forEach(log => {
-                console.log("log:", log);
+                // console.log("log:", log);
                 totalTimeSpent += log.timeSpent;
             });
             return totalTimeSpent;
@@ -47,22 +54,22 @@ function resetData() {
 
 document.getElementById('resetData').onclick = function () {
     resetData().then(function () {
-        t.closePopup();
+        t.closeModal();
     });
 }
-document.getElementById('closePopup').onclick = function () {
-    t.closePopup();
+document.getElementById('closeModal').onclick = function () {
+    t.closeModal();
 }
 document.getElementById('insertValue').onclick = function () {
-    addTimeToTotalSpent(document.getElementById('timeSpentToAdd').value).then(function () {
-        t.closePopup();
+    addTimeToTotalSpent($('#timeSpentToAdd').value, $('#timeSpentToAdd').value).then(function () {
+        t.closeModal();
     });
 }
 
 /////render/////
 t.render(function () {
     var container = document.getElementById('timeSpentStatus');
-    var time = calculTotalTimeSPent().then(function () {
+    var time = calculTotalTimeSpent().then(function () {
         console.log("total time:", time)
         if (time) {
             container.textContent = "You passed ";

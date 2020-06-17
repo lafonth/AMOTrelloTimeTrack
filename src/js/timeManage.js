@@ -50,8 +50,8 @@ document.getElementById('resetData').onclick = function () {
     resetData().then(function () {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
             console.log("after RESET :", data);
+            t.closeModal();
         });
-        t.closeModal();
     });
 }
 document.getElementById('closeModal').onclick = function () {
@@ -63,8 +63,8 @@ document.getElementById('insertValue').onclick = function () {
     addTimeToTotalSpent(valTimeSpentToAdd,valDateSpent ).then(function () {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
             console.log("after:", data);
+            t.closeModal();
         });
-        t.closeModal();
     });
 }
 

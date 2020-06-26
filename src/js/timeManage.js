@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 var t = TrelloPowerUp.iframe();
 
-var context = t.board('name','members');
+var context = t.board('name', 'members');
 console.log(JSON.stringify(context, null, 2));
 
 /////utils card/////
@@ -10,7 +10,7 @@ console.log(JSON.stringify(context, null, 2));
 function addTimeToTotalSpent(value, date) {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            if (data.logs !== 'undefined') {
+            if (data.logs == 'undefined') {
                 data = {
                     logs: new Array
                 }
@@ -37,6 +37,10 @@ function calculTotalTimeSpent() {
                 data.logs.forEach(log => {
                     totalTimeSpent += parseInt(log.timeSpent);
                 });
+            } else {
+                data = {
+                    logs: new Array
+                }
             }
             resolve(totalTimeSpent);
         }, function (error) {

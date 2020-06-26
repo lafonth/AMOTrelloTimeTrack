@@ -19,6 +19,8 @@ function addTimeToTotalSpent(value, date) {
             t.set('card', 'shared', 'timeTrack', data).then(function () {
                 resolve();
             });
+        },function(error){
+            console.log('error get timeTrack in addTimeToTotalSpent');
         });
     });
 }
@@ -34,6 +36,8 @@ function calculTotalTimeSpent() {
                 });
             }
             resolve(totalTimeSpent);
+        },function(error){
+            console.log('error get timeTrack in calculTotalTimeSpent');
         });
     });
 }
@@ -77,7 +81,7 @@ document.getElementById('insertValue').onclick = function () {
 
 /////render/////
 t.render(function () {
-    // NOT TRIGGERED WHEN SET DATA used
+    // NOT TRIGGERED WHEN SET DATA used, I don't know why
 
     updateDisplay();
 

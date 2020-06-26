@@ -2,12 +2,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 var t = TrelloPowerUp.iframe();
 
+var context = t.getContext();
+console.log(JSON.stringify(context, null, 2));
+
 /////utils card/////
 
 function addTimeToTotalSpent(value, date) {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            if(data.logs !== 'undefined'){
+            if (data.logs !== 'undefined') {
                 data = {
                     logs: new Array
                 }
@@ -19,7 +22,7 @@ function addTimeToTotalSpent(value, date) {
             t.set('card', 'shared', 'timeTrack', data).then(function () {
                 resolve();
             });
-        },function(error){
+        }, function (error) {
             console.log('error get timeTrack in addTimeToTotalSpent');
         });
     });
@@ -30,13 +33,13 @@ function calculTotalTimeSpent() {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
             var totalTimeSpent = 0;
             //TODO debug this
-            if(data.logs !== 'undefined'){
+            if (data.logs !== 'undefined') {
                 data.logs.forEach(log => {
                     totalTimeSpent += parseInt(log.timeSpent);
                 });
             }
             resolve(totalTimeSpent);
-        },function(error){
+        }, function (error) {
             console.log('error get timeTrack in calculTotalTimeSpent');
         });
     });
@@ -44,12 +47,14 @@ function calculTotalTimeSpent() {
 
 function resetData() {
     return new Promise((resolve) => {
-        t.set('card', 'shared', 'timeTrack', {}).then(resolve());
+        t.set('card', 'shared', 'timeTrack', {
+            logs: new Array
+        }).then(resolve());
     });
 }
 
 function updateDisplay() {
-    calculTotalTimeSpent().then((time)=>{
+    calculTotalTimeSpent().then((time) => {
         document.getElementById('totalTimeSpent').textContent = time;
     });
 

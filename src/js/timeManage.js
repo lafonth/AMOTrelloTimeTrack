@@ -2,8 +2,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 var t = TrelloPowerUp.iframe();
 
-var context = t.getContext();
-console.log(JSON.stringify(context, null, 2));
+var context = t.board('name','members');
+console.log(JSON.stringify(context.member, null, 2));
 
 /////utils card/////
 

@@ -86,14 +86,23 @@ document.getElementById('insertValue').onclick = function () {
 }
 
 var members = t.arg("members").members;
-console.log(members);
 members.forEach(member => {
     var option = document.createElement('option');
-    option.text = member.fullName;
-    option.value = member;
+    const optionText = document.createTextNode(escapeHTML(member.fullName));
+    console.log('optionText', optionText);
+    option.appendChild(optionText);
+    option.setAttribute('value', member);
     document.getElementById('members').addEventListener(option, null);
 });
 
+function escapeHTML(unsafe) {
+	return (''+unsafe)
+	  .replace(/&(?!amp;)/g, "&amp;")
+	  .replace(/<(?!lt;)/g, "&lt;")
+	  .replace(/>(?!gt;)/g, "&gt;")
+	  .replace(/"(?!quot;)/g, "&quot;")
+	  .replace(/'(?!#039;)/g, "&#039;");
+};
 
 
 /////render/////

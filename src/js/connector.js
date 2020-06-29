@@ -1,12 +1,13 @@
 var manageTimeButton = function (t, opts) {
-    return t.modal({
-        title: 'Time spent',
-        url: './timeManage.html',
-        height: 400,
-        args : {
-            members : t.card('members')
-        }
-    });
+    console.log(t.card('members'));
+    // return t.modal({
+    //     title: 'Time spent',
+    //     url: './timeManage.html',
+    //     height: 400,
+    //     args : {
+    //         members : t.card('members')
+    //     }
+    // });
 }
 
 window.TrelloPowerUp.initialize({

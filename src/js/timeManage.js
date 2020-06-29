@@ -59,18 +59,45 @@ function updateDisplay() {
         document.getElementById('totalTimeSpent').textContent = time;
     });
 
-    var members = t.arg("members").members;
-    members.forEach(member => {
-        var option = document.createElement('option');
-        const optionText = document.createTextNode(escapeHTML(member.fullName));
-        console.log('optionText', optionText);
-        option.appendChild(optionText);
-        option.setAttribute('value', member);
-        document.getElementById('members').addEventListener(option, null);
-    });
+    //TODO
+    // var members = t.arg("members").members;
+    // members.forEach(member => {
+    //     var option = document.createElement('option');
+    //     const optionText = document.createTextNode(escapeHTML(member.fullName));
+    //     console.log('optionText', optionText);
+    //     option.appendChild(optionText);
+    //     option.setAttribute('value', member);
+    //     document.getElementById('members').addEventListener(option, null);
+    // });
 
+    //TODO
     // var logsContainer = document.getElementById('logTimeSpent');
-    // logsContainer.textContent = displayLogs(); //TODO
+    // displayLogs().then(function (logs) {
+    //     logs.forEach(log => {
+    //         logsContainer.
+    //     });
+    // });
+}
+
+function displayLogs(){
+    return new Promise((resolve) => {
+        t.get('card', 'shared', 'timeTrack').then(function (data) {
+            var totalTimeSpent = 0;
+            //TODO debug this
+            if (typeof data !== 'undefined') {
+                data.logs.forEach(log => {
+                    totalTimeSpent += parseInt(log.timeSpent);
+                });
+            } else {
+                data = {
+                    logs: new Array
+                }
+            }
+            resolve(totalTimeSpent);
+        }, function (error) {
+            console.log('error get timeTrack in calculTotalTimeSpent');
+        });
+    });
 }
 
 /////general exec/////
@@ -96,7 +123,7 @@ document.getElementById('insertValue').onclick = function () {
 }
 
 
-
+// TODO create utils file
 function escapeHTML(unsafe) {
     return ('' + unsafe)
         .replace(/&(?!amp;)/g, "&amp;")

@@ -2,7 +2,10 @@ var manageTimeButton = function (t, opts) {
     return t.modal({
         title: 'Time spent',
         url: './timeManage.html',
-        height: 400
+        height: 400,
+        args : {
+            members : t.card('members')
+        }
     });
 }
 

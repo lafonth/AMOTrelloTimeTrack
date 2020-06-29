@@ -2,9 +2,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 var t = TrelloPowerUp.iframe();
 
-var members = t.arg("members");
-console.log(members);
-
 /////utils card/////
 
 function addTimeToTotalSpent(value, date) {
@@ -74,9 +71,11 @@ document.getElementById('resetData').onclick = function () {
         // t.closeModal();
     });
 }
+
 document.getElementById('closeModal').onclick = function () {
     t.closeModal();
 }
+
 document.getElementById('insertValue').onclick = function () {
     var valTimeSpentToAdd = document.getElementById('timeSpentToAdd').value;
     var valDateSpent = document.getElementById('dateSpent').value;
@@ -85,6 +84,14 @@ document.getElementById('insertValue').onclick = function () {
         // t.closeModal();
     });
 }
+
+var members = t.arg("members").members;
+members.forEach(member => {
+    var option = document.createElement('option');
+    option.text = member.fullName;
+    option.value = member;
+    document.getElementById('members').addEventListener(option, null);
+});
 
 
 

@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 var t = TrelloPowerUp.iframe();
 
-var context = t.board('name', 'members');
+var context = t.board('members');
 console.log(JSON.stringify(context, null, 2));
 
 /////utils card/////

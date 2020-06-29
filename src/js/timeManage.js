@@ -85,7 +85,8 @@ document.getElementById('insertValue').onclick = function () {
     });
 }
 
-var members = t.arg("members");
+var members = t.arg("members").members;
+console.log(members);
 members.forEach(member => {
     var option = document.createElement('option');
     option.text = member.fullName;

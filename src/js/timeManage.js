@@ -10,7 +10,7 @@ console.log(JSON.stringify(context, null, 2));
 function addTimeToTotalSpent(value, date) {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            if (data.logs == 'undefined') {
+            if (typeof data.logs == 'undefined') {
                 data = {
                     logs: new Array
                 }
@@ -33,7 +33,7 @@ function calculTotalTimeSpent() {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
             var totalTimeSpent = 0;
             //TODO debug this
-            if (data.logs !== 'undefined') {
+            if (typeof data.logs !== 'undefined') {
                 data.logs.forEach(log => {
                     totalTimeSpent += parseInt(log.timeSpent);
                 });

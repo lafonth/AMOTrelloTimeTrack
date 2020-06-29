@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 var t = TrelloPowerUp.iframe();
 
 var card = t.card('all');
-console.log(JSON.stringify(card, null, 2));
+console.log(JSON.stringify(card));
 
 /////utils card/////
 

@@ -59,6 +59,16 @@ function updateDisplay() {
         document.getElementById('totalTimeSpent').textContent = time;
     });
 
+    var members = t.arg("members").members;
+    members.forEach(member => {
+        var option = document.createElement('option');
+        const optionText = document.createTextNode(escapeHTML(member.fullName));
+        console.log('optionText', optionText);
+        option.appendChild(optionText);
+        option.setAttribute('value', member);
+        document.getElementById('members').addEventListener(option, null);
+    });
+
     // var logsContainer = document.getElementById('logTimeSpent');
     // logsContainer.textContent = displayLogs(); //TODO
 }
@@ -85,29 +95,22 @@ document.getElementById('insertValue').onclick = function () {
     });
 }
 
-var members = t.arg("members").members;
-members.forEach(member => {
-    var option = document.createElement('option');
-    const optionText = document.createTextNode(escapeHTML(member.fullName));
-    console.log('optionText', optionText);
-    option.appendChild(optionText);
-    option.setAttribute('value', member);
-    document.getElementById('members').addEventListener(option, null);
-});
+
 
 function escapeHTML(unsafe) {
-	return (''+unsafe)
-	  .replace(/&(?!amp;)/g, "&amp;")
-	  .replace(/<(?!lt;)/g, "&lt;")
-	  .replace(/>(?!gt;)/g, "&gt;")
-	  .replace(/"(?!quot;)/g, "&quot;")
-	  .replace(/'(?!#039;)/g, "&#039;");
+    return ('' + unsafe)
+        .replace(/&(?!amp;)/g, "&amp;")
+        .replace(/<(?!lt;)/g, "&lt;")
+        .replace(/>(?!gt;)/g, "&gt;")
+        .replace(/"(?!quot;)/g, "&quot;")
+        .replace(/'(?!#039;)/g, "&#039;");
 };
 
 
 /////render/////
 t.render(function () {
     // NOT TRIGGERED WHEN SET DATA used, I don't know why
+    // triggered only when opening
 
     updateDisplay();
 

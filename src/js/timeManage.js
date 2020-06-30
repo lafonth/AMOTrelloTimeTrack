@@ -74,7 +74,17 @@ function updateDisplay() {
     //TODO
     displayLogs().then(function (logs) {
         logs.forEach(log => {
-            // $('#logTimeSpent .tbody').append("<tr></tr>");
+            $('#logTimeSpent .tbody').append(`<tr>
+                <td>`+
+                    "log.member"
+                +`</td>
+                <td>`+
+                    log.date
+                +`</td>
+                <td>`+
+                    parseInt(log.timeSpent)
+                +`</td>
+            </tr>`);
         });
     });
 }

@@ -69,6 +69,7 @@ function updateDisplay() {
     //     option.setAttribute('value', member);
     //     document.getElementById('members').addEventListener(option, null);
     // });
+    console.log($('#logTimeSpent'));
 
     //TODO
     // var logsContainer = document.getElementById('logTimeSpent');

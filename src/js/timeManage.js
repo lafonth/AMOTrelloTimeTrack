@@ -30,7 +30,6 @@ function calculTotalTimeSpent() {
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
             var totalTimeSpent = 0;
-            //TODO debug this
             if (typeof data !== 'undefined') {
                 data.logs.forEach(log => {
                     totalTimeSpent += parseInt(log.timeSpent);
@@ -92,18 +91,12 @@ function updateDisplay() {
 function displayLogs(){
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
-            var totalTimeSpent = 0;
-            //TODO debug this
-            if (typeof data !== 'undefined') {
-                data.logs.forEach(log => {
-                    totalTimeSpent += parseInt(log.timeSpent);
-                });
-            } else {
+            if (typeof data == 'undefined') {
                 data = {
                     logs: new Array
                 }
             }
-            resolve(totalTimeSpent);
+            resolve(data);
         }, function (error) {
             console.log('error get timeTrack in calculTotalTimeSpent');
         });

@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import './lib/jquery-3.5.1.min.js'
 
 $(document).ready(function() {
     console.log('document ready');

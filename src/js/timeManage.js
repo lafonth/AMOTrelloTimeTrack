@@ -1,8 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css';
 
-$(document).ready(function() {
-    console.log('document ready');
-});
 /////init/////
 var t = TrelloPowerUp.iframe();
 
@@ -73,15 +70,13 @@ function updateDisplay() {
     //     option.setAttribute('value', member);
     //     document.getElementById('members').addEventListener(option, null);
     // });
-    console.log($('#logTimeSpent'));
 
     //TODO
-    // var logsContainer = document.getElementById('logTimeSpent');
-    // displayLogs().then(function (logs) {
-    //     logs.forEach(log => {
-    //         logsContainer.
-    //     });
-    // });
+    displayLogs().then(function (logs) {
+        logs.forEach(log => {
+            // $('#logTimeSpent .tbody').append("<tr></tr>");
+        });
+    });
 }
 
 function displayLogs(){

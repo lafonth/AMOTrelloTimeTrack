@@ -3,6 +3,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 /////init/////
 var t = TrelloPowerUp.iframe();
 
+var members = t.arg("members").members;
+members.forEach(member => {
+    var optionText = member.fullName;
+    var optionValue = member.fullName;
+    $('#members').append(`<option value="${optionValue}"> 
+                                       ${optionText} 
+                                  </option>`);
+});
+
 /////utils card/////
 
 function addTimeToTotalSpent(value, date) {
@@ -58,15 +67,6 @@ function resetData() {
 function updateDisplay() {
     calculTotalTimeSpent().then((time) => {
         document.getElementById('totalTimeSpent').textContent = time;
-    });
-
-    var members = t.arg("members").members;
-    members.forEach(member => {
-        var optionText = member.fullName;
-        var optionValue = member.fullName;
-        $('#members').append(`<option value="${optionValue}"> 
-                                       ${optionText} 
-                                  </option>`);
     });
 
     displayLogs();

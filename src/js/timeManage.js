@@ -15,7 +15,8 @@ function addTimeToTotalSpent(value, date) {
             }
             data.logs.push({
                 date: date,
-                timeSpent: value
+                timeSpent: value,
+                member: $("members").val()
             });
             t.set('card', 'shared', 'timeTrack', data).then(function () {
                 resolve();
@@ -59,12 +60,10 @@ function updateDisplay() {
         document.getElementById('totalTimeSpent').textContent = time;
     });
 
-    //TODO
     var members = t.arg("members").members;
     members.forEach(member => {
         var optionText = member.fullName;
         var optionValue = member.fullName;
-
         $('#members').append(`<option value="${optionValue}"> 
                                        ${optionText} 
                                   </option>`);

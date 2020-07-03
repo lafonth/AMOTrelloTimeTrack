@@ -64,8 +64,7 @@ function updateDisplay() {
     members.forEach(member => {
         console.log(member);
         var option = document.createElement('option');
-        const optionText = document.createTextNode(escapeHTML(member.fullName));
-        option.appendChild(optionText);
+        option.html(member.fullName);
         option.data('data-value', member);
         $('#members').append(option);
     });

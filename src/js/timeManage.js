@@ -60,17 +60,16 @@ function updateDisplay() {
     });
 
     //TODO
-    // var members = t.arg("members").members;
-    // members.forEach(member => {
-    //     var option = document.createElement('option');
-    //     const optionText = document.createTextNode(escapeHTML(member.fullName));
-    //     console.log('optionText', optionText);
-    //     option.appendChild(optionText);
-    //     option.setAttribute('value', member);
-    //     document.getElementById('members').addEventListener(option, null);
-    // });
+    var members = t.arg("members").members;
+    members.forEach(member => {
+        console.log(member);
+        var option = document.createElement('option');
+        const optionText = document.createTextNode(escapeHTML(member.fullName));
+        option.appendChild(optionText);
+        option.data('data-value', member);
+        $('#members').append(option);
+    });
 
-    //TODO
     displayLogs();
 }
 
@@ -82,11 +81,10 @@ function displayLogs() {
                 logs: new Array
             }
         }
-        console.log($('#logTimeSpent > table > tbody'));
         data.logs.forEach(log => {
             $('#bodyLogTimeSpent').append(`<tr>
                     <td>` +
-                "log.member" +
+                log.member +
                 `</td>
                     <td>` +
                 log.date +

@@ -25,7 +25,7 @@ function addTimeToTotalSpent(value, date) {
             data.logs.push({
                 date: date,
                 timeSpent: value,
-                member: $("members").val()
+                member: $("#members").val()
             });
             t.set('card', 'shared', 'timeTrack', data).then(function () {
                 resolve();

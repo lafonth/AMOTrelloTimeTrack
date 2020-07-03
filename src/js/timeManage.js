@@ -83,8 +83,8 @@ function displayLogs() {
                 logs: new Array
             }
         }
+        $('#bodyLogTimeSpent').empty();
         data.logs.forEach(log => {
-            $('#bodyLogTimeSpent').empty();
             $('#bodyLogTimeSpent').append(`<tr>
                     <td>` +
                 log.member +

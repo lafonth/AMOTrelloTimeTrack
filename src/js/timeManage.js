@@ -60,7 +60,10 @@ function resetData() {
     return new Promise((resolve) => {
         t.set('card', 'shared', 'timeTrack', {
             logs: new Array
-        }).then(resolve());
+        }).then(() => {
+            updateDisplay();
+            resolve();
+        });
     });
 }
 

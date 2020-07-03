@@ -82,8 +82,8 @@ function displayLogs() {
                 logs: new Array
             }
         }
+        console.log($('#logTimeSpent'));
         data.logs.forEach(log => {
-            console.log($('#logTimeSpent > tbody'));
             $('#logTimeSpent > tbody').append(`<tr>
                     <td>` +
                 "log.member" +

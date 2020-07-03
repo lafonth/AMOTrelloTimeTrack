@@ -71,35 +71,31 @@ function updateDisplay() {
     // });
 
     //TODO
-    displayLogs().then(function (logs) {
-        logs.forEach(log => {
-            $('#logTimeSpent .tbody').append(`<tr>
-                <td>`+
-                    "log.member"
-                +`</td>
-                <td>`+
-                    log.date
-                +`</td>
-                <td>`+
-                    parseInt(log.timeSpent)
-                +`</td>
-            </tr>`);
-        });
-    });
+    displayLogs();
 }
 
-function displayLogs(){
-    return new Promise((resolve) => {
-        t.get('card', 'shared', 'timeTrack').then(function (data) {
-            if (typeof data == 'undefined') {
-                data = {
-                    logs: new Array
-                }
+function displayLogs() {
+    t.get('card', 'shared', 'timeTrack').then(function (data) {
+        if (typeof data == 'undefined') {
+            data = {
+                logs: new Array
             }
-            resolve(data);
-        }, function (error) {
-            console.log('error get timeTrack in calculTotalTimeSpent');
+        }
+        logs.forEach(log => {
+            $('#logTimeSpent .tbody').append(`<tr>
+                    <td>` +
+                "log.member" +
+                `</td>
+                    <td>` +
+                log.date +
+                `</td>
+                    <td>` +
+                parseInt(log.timeSpent) +
+                `</td>
+                </tr>`);
         });
+    }, function (error) {
+        console.log('error get timeTrack in calculTotalTimeSpent');
     });
 }
 

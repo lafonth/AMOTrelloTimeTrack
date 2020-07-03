@@ -65,7 +65,7 @@ function updateDisplay() {
         console.log(member);
         var option = document.createElement('option');
         option.html(member.fullName);
-        option.data('data-value', member);
+        option.attr("value", member.fullName);
         $('#members').append(option);
     });
 

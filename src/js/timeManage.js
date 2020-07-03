@@ -62,8 +62,8 @@ function updateDisplay() {
     //TODO
     var members = t.arg("members").members;
     members.forEach(member => {
-        optionText = member.fullName;
-        optionValue = member.fullName;
+        var optionText = member.fullName;
+        var optionValue = member.fullName;
 
         $('#members').append(`<option value="${optionValue}"> 
                                        ${optionText} 

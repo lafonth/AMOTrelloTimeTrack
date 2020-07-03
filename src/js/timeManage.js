@@ -62,11 +62,12 @@ function updateDisplay() {
     //TODO
     var members = t.arg("members").members;
     members.forEach(member => {
-        console.log(member);
-        var option = document.createElement('option');
-        option.text(member.fullName);
-        // option.attr("value", member.fullName);
-        $('#members').append(option);
+        optionText = member.fullName;
+        optionValue = member.fullName;
+
+        $('#members').append(`<option value="${optionValue}"> 
+                                       ${optionText} 
+                                  </option>`);
     });
 
     displayLogs();
@@ -74,7 +75,7 @@ function updateDisplay() {
 
 function displayLogs() {
     t.get('card', 'shared', 'timeTrack').then(function (data) {
-        
+
         if (typeof data == 'undefined') {
             data = {
                 logs: new Array

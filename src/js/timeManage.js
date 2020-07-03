@@ -95,7 +95,7 @@ function displayLogs() {
                 </tr>`);
         });
     }, function (error) {
-        console.log('error get timeTrack in calculTotalTimeSpent');
+        console.log('error get timeTrack in displayLogs');
     });
 }
 

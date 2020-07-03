@@ -12,13 +12,14 @@ members.forEach(member => {
                                   </option>`);
 });
 
-$('#dateSpent').attr("value", DateTime.Today.ToString("yyyy-MM-dd"));
+//TODO default date to Today ==> use of moment.js?
+// $('#dateSpent').attr("value", DateTime.Today.ToString("yyyy-MM-dd"));
 
 /////utils card/////
 
 function addTimeToTotalSpent(value, date) {
     //TODO check if all value are set
-    
+
     return new Promise((resolve) => {
         t.get('card', 'shared', 'timeTrack').then(function (data) {
             if (typeof data == 'undefined') {

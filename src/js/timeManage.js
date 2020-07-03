@@ -76,6 +76,7 @@ function updateDisplay() {
 
 function displayLogs() {
     t.get('card', 'shared', 'timeTrack').then(function (data) {
+        console.log(data);
         if (typeof data == 'undefined') {
             data = {
                 logs: new Array

@@ -64,8 +64,8 @@ function updateDisplay() {
     members.forEach(member => {
         console.log(member);
         var option = document.createElement('option');
-        option.html(member.fullName);
-        option.attr("value", member.fullName);
+        // option.html(member.fullName);
+        // option.attr("value", member.fullName);
         $('#members').append(option);
     });
 

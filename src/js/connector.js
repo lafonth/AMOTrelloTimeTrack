@@ -1,5 +1,6 @@
 var manageTimeButton = function (t, opts) {
     t.card('members').then(function (members) {
+        console.log("members in connector", members);
         return t.modal({
             title: 'Time spent',
             url: './timeManage.html',

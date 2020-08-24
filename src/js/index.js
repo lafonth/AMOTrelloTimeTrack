@@ -42,6 +42,7 @@ TrelloPowerUp.initialize({
   },
 
   "card-from-url": async function(t, opts) {
+    //test
     let match = opts.url.match(ADDON_LINKS_RE);
 
     try {

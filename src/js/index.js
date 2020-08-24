@@ -33,7 +33,7 @@ TrelloPowerUp.initialize({
     return [{
       title: "Reviews",
       claimed: claimed,
-      icon: TrelloPowerUp.util.relativeUrl("../images/addon.png"),
+      icon: TrelloPowerUp.util.relativeUrl("../src/images/addon.png"),
       content: {
         type: "iframe",
         url: t.signUrl("./amo.html"),

@@ -7,7 +7,7 @@
   "author": "Hubert LAFONT",
   "license": "MIT",
   "scripts": {
-    "build": "parcel build src/html/*.html"
+    "build": "parcel build src/html/*.html --no-minify"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4"

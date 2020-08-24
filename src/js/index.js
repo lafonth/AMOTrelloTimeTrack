@@ -41,22 +41,22 @@ TrelloPowerUp.initialize({
     }];
   },
 
-  // "card-from-url": async function(t, opts) {
-  //   //test
-  //   let match = opts.url.match(ADDON_LINKS_RE);
+  "card-from-url": async function(t, opts) {
+    //test
+    let match = opts.url.match(ADDON_LINKS_RE);
 
-  //   try {
-  //     let resp = await fetch("https://addons.mozilla.org/api/v4/addons/addon/" + match[5]);
-  //     let data = await resp.json();
+    try {
+      let resp = await fetch("https://addons.mozilla.org/api/v4/addons/addon/" + match[5]);
+      let data = await resp.json();
 
-  //     return {
-  //       name: "Review: " + data.name["en-US"],
-  //     };
-  //   } catch (e) {
-  //     console.error(e);
-  //     throw t.NotHandled();
-  //   }
-  // },
+      return {
+        name: "Review: " + data.name["en-US"],
+      };
+    } catch (e) {
+      console.error(e);
+      throw t.NotHandled();
+    }
+  },
 
   "list-actions": function(t, opts) {
     return [{

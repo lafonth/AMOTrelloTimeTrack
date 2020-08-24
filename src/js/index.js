@@ -35,7 +35,7 @@ TrelloPowerUp.initialize({
       icon: TrelloPowerUp.util.relativeUrl("./images/addon.png"),
       content: {
         type: "iframe",
-        url: t.signUrl("../html/amo.html"),
+        url: t.signUrl("./amo.html"),
         height: 64
       }
     }];
